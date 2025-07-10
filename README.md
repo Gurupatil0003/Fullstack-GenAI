@@ -72,3 +72,63 @@ warnings.filterwarnings('ignore')
 
 
 ```
+~~~python
+
+
+
+import tensorflow as tf
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Flatten, Dense
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from tensorflow.keras.layers import Conv2D, MaxPooling2D
+
+# Config
+IMG_SIZE = 64
+BATCH_SIZE = 32
+
+# Updated Paths for Brain Tumor Dataset
+train_path = "/content/Brain-Tumor-Data-Set-main/Brain Tumor Data Set/Test"
+val_path = "/content/Brain-Tumor-Data-Set-main/Brain Tumor Data Set/Train"
+
+# Data Loaders
+train_data = ImageDataGenerator(rescale=1./255).flow_from_directory(
+    train_path,
+    target_size=(IMG_SIZE, IMG_SIZE),
+    batch_size=BATCH_SIZE,
+    class_mode='binary'
+)
+
+val_data = ImageDataGenerator(rescale=1./255).flow_from_directory(
+    val_path,
+    target_size=(IMG_SIZE, IMG_SIZE),
+    batch_size=BATCH_SIZE,
+    class_mode='binary'
+)
+
+# MLP Model
+
+# model = Sequential([
+#     Conv2D(32, (3,3), activation='relu', input_shape=(IMG_SIZE, IMG_SIZE, 3)),
+#     MaxPooling2D(2,2),
+#     Conv2D(64, (3,3), activation='relu'),
+#     MaxPooling2D(2,2),
+#     Flatten(),
+#     Dense(128, activation='relu'),
+#     Dense(1, activation='sigmoid')
+# ])
+
+
+model = Sequential([
+    Flatten(input_shape=(IMG_SIZE, IMG_SIZE, 3)),
+    Dense(128, activation='relu'),
+    Dense(1, activation='sigmoid')
+])
+
+# Compile
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+
+# Train
+model.fit(train_data, epochs=5, validation_data=val_data)
+
+
+~~~
