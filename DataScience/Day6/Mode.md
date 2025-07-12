@@ -1,3 +1,6 @@
+https://colab.research.google.com/drive/1HJmbOVS3BRle6FbyfD8LYjWSDm6XA4CQ
+
+
 # LangChain Notebook Examples
 
 | Topic            | PDF Link                                                                                                                                     | Streamlit App                                                                                      | Colab Notebook                                                                                                                                           |
