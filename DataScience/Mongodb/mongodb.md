@@ -6,7 +6,7 @@ db.sales.insertMany([
   { "product": "Laptop", "quantity": 2, "price": 50000 },
   { "product": "Phone", "quantity": 5, "price": 15000 },
   { "product": "Tablet", "quantity": 3, "price": 20000 }
-])  allready this data i have in my mongodb can u use thos one
+]) 
 
 ```
 
