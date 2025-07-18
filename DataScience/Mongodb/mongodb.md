@@ -228,3 +228,20 @@ db.myCollection.getIndexes()
 db.myCollection.dropIndex("name_1")
 
 ```
+
+```python
+show dbs                     # Show all databases
+use myDatabase               # Switch / Create database
+db 
+
+
+show collections                         # Show collections
+db.createCollection("myCollection")
+
+db.myCollection.insertOne({ name: "John", age: 25 })   # Insert one
+
+db.myCollection.find()                     # Find all
+
+db.myCollection.find({ age: 25 })          # Find by condition
+
+```
