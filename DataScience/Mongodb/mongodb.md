@@ -168,3 +168,63 @@ df.orderBy(df.salary.desc()).show()
 # Step 8: Stop Spark
 spark.stop()
 ```
+
+## DBS
+```python
+
+# MongoDB Basic Commands Cheat Sheet
+
+## 1. Start Mongo Shell
+mongosh
+
+## 2. Database Commands
+show dbs                     # Show all databases
+use myDatabase               # Switch / Create database
+db                           # Show current database
+db.dropDatabase()            # Drop current database
+
+## 3. Collection Commands
+show collections                         # Show collections
+db.createCollection("myCollection")      # Create collection
+db.myCollection.drop()                   # Drop collection
+
+## 4. Insert Data
+db.myCollection.insertOne({ name: "John", age: 25 })   # Insert one
+db.myCollection.insertMany([
+  { name: "Alice", age: 22 },
+  { name: "Bob", age: 30 }
+])                                                     # Insert many
+
+## 5. Read Data
+db.myCollection.find()                     # Find all
+db.myCollection.find().pretty()            # Pretty print
+db.myCollection.find({ age: 25 })          # Find by condition
+db.myCollection.find({}, { name: 1 })      # Projection (select fields)
+db.myCollection.find().sort({ age: 1 })    # Sort ascending
+db.myCollection.find().sort({ age: -1 })   # Sort descending
+db.myCollection.find().limit(5)            # Limit results
+db.myCollection.find().skip(5)             # Skip records
+
+## 6. Update Data
+db.myCollection.updateOne(
+  { name: "John" },
+  { $set: { age: 30 } }
+)
+db.myCollection.updateMany(
+  { age: { $lt: 25 } },
+  { $set: { status: "minor" } }
+)
+
+## 7. Delete Data
+db.myCollection.deleteOne({ name: "John" })
+db.myCollection.deleteMany({ age: { $lt: 18 } })
+
+## 8. Count Documents
+db.myCollection.countDocuments()
+
+## 9. Indexes
+db.myCollection.createIndex({ name: 1 })
+db.myCollection.getIndexes()
+db.myCollection.dropIndex("name_1")
+
+```
