@@ -109,3 +109,21 @@ elif page == "📞 Contact":
 
 
 ```
+
+```python
+from streamlit_lottie import st_lottie
+import requests
+
+def load_lottieurl(url):
+    r = requests.get(url)
+    if r.status_code != 200:
+        return None
+    return r.json()
+
+
+# Example Animation 1
+lottie_animation = load_lottieurl("https://assets3.lottiefiles.com/packages/lf20_bdlrkrqv.json")
+st_lottie(lottie_animation, height=300)
+
+
+```
