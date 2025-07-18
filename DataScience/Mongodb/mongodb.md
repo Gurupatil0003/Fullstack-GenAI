@@ -245,3 +245,34 @@ db.myCollection.find()                     # Find all
 db.myCollection.find({ age: 25 })          # Find by condition
 
 ```
+
+# Raw code
+```python
+
+from pymongo import MongoClient
+import pandas as pd
+
+client=MongoClient("mongodb://localhost:27017/")
+db=client["salesdb"]
+so=db["sales"]
+ta=db["sa"]
+
+data=list(so.find())
+df=pd.DataFrame(data)
+print(df)
+
+if '_id' in df.columns:
+    df=df.drop(columns=['_id'])
+
+df["total"]=df['price']*df['quantity']
+df=df.sort_values(by='total',ascending=False)
+
+ta.delete_many({})
+ta.insert_many(df.to_dict('records'))
+print("_____________")
+print(df)
+
+
+
+
+```
