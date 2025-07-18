@@ -125,3 +125,46 @@ def run_etl_api():
     transformed_data = run_etl()
     return {"message": "ETL process completed", "records": transformed_data[:5]}
 ```
+
+## Spark
+
+```python
+
+# Step 1: Install PySpark
+!pip install pyspark
+
+# Step 2: Import SparkSession
+from pyspark.sql import SparkSession
+
+# Create Spark Session
+spark = SparkSession.builder.appName("ColabPySparkExample").getOrCreate()
+
+
+# Step 4: Load CSV into PySpark DataFrame
+df = spark.read.csv("employees.csv", header=True, inferSchema=True)
+
+# Show original data
+print("Original Data:")
+df.show()
+
+# Step 5: Basic Operations
+print("Select name and salary:")
+
+
+
+df.select("name", "salary").show()
+
+print("Filter age > 30:")
+df.filter(df.age > 30).show()
+
+# Step 6: GroupBy and Aggregation
+print("Average salary by department:")
+df.groupBy("department").avg("salary").show()
+
+# Step 7: Sort data by salary (descending)
+print("Employees sorted by salary (High to Low):")
+df.orderBy(df.salary.desc()).show()
+
+# Step 8: Stop Spark
+spark.stop()
+```
