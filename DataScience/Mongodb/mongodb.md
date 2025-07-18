@@ -1,3 +1,16 @@
+## Start App
+```python
+uvicorn a:app --reload
+
+
+uvicorn app:app --reload
+
+python -m uvicorn --version
+
+python -m uvicorn app:app --reload
+
+```
+
 ## database
 
 ```python
