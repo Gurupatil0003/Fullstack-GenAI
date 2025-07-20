@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>spam detector</h1>
+    <form action="/" method="post">
+        <h2>messege</h2>
+        <textarea name="messege" rows="5" cols="50" placeholder="add messege here"></textarea>
+        <button>Submit</button>
+    </form>
+
+    {% if messege %}
+       <h2>messege {messege}</h2>
+       <h5>{result}</h5>
+    {% endif %}   
+</body>
+</html>

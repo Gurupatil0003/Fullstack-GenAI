@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/LENOVO/Downloads/New%20folder%20%2815%29/mlruns/0/models/m-4ca5adf6a9be45a9859ba5307bb453df/artifacts
+creation_timestamp: 1753022575336
+experiment_id: '0'
+last_updated_timestamp: 1753022596169
+model_id: m-4ca5adf6a9be45a9859ba5307bb453df
+model_type: null
+name: logistic_model
+source_run_id: 04465a67858244d688408d46ac54e67f
+status: 2
+status_message: null

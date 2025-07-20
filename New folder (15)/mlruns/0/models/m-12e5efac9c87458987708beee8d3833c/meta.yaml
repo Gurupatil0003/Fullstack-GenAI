@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/LENOVO/Downloads/New%20folder%20%2815%29/mlruns/0/models/m-12e5efac9c87458987708beee8d3833c/artifacts
+creation_timestamp: 1753022866883
+experiment_id: '0'
+last_updated_timestamp: 1753022884017
+model_id: m-12e5efac9c87458987708beee8d3833c
+model_type: null
+name: iris_model
+source_run_id: 03efca32bb1042c1a30dbdb25b68cb19
+status: 2
+status_message: null
