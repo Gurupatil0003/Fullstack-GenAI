@@ -1,3 +1,4 @@
+```python
 model_columns = [
     'num_occupants',
     'house_size_sqft',
@@ -29,7 +30,7 @@ model_columns = [
     'day_of_week_6',
     'energy_star_home'
 ]
-
+```
 https://docs.google.com/spreadsheets/d/1_ixKQ-wIsOwJj8McX1Q6GgU4YV9bQuddkXmZxWWyelU/edit?usp=sharing
 
 ## app.py
