@@ -56,7 +56,7 @@ if markdown_cols:
 else:
     st.info("No markdown data available for this store/department.")
 
-st.caption("Built with ❤️ by Mounesh")
+st.caption("Built with ❤️ by Guru")
 
 
 ```
