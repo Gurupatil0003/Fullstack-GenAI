@@ -61,6 +61,9 @@ st.caption("Built with ❤️ by Guru")
 
 ```
 
+
+## forecast_model.py
+
 ```python
 from prophet import Prophet
 import pandas as pd
@@ -89,6 +92,7 @@ def train_prophet(store_id=1, dept_id=1):
 
 ```
 
+## prepare_data.py
 ```python
 import pandas as pd
 
@@ -112,6 +116,8 @@ def load_and_merge_data():
 
 ```
 
+## ## run_forecast.py
+
 ```python
 from forecast_model import train_prophet
 
@@ -122,6 +128,7 @@ print(forecast)
 
 ```
 
+## mongo_utils.py
 ```python
 from pymongo import MongoClient
 from datetime import datetime
