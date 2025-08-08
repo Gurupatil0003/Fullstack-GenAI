@@ -1,6 +1,7 @@
+b.py
+
 ```python
-# FASTAPI BACKEND - main.py
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from pydantic import BaseModel
 from a import generate_health_insight, analyze_with_huggingface
 
@@ -20,23 +21,19 @@ def predict(data: PatientData):
         hf_analysis = analyze_with_huggingface(data.history + " " + data.symptoms)
         return {
             "gemini_insight": gemini_insight,
-            "hf_analysis": hf_analysis
         }
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+
 
 ```
 
+streamlit.py
 ```python
 
-# STREAMLIT FRONTEND - app.py
 import streamlit as st
 import requests
 import pandas as pd
 
 st.set_page_config(page_title="AI Health Analytics", layout="wide")
-st.title("🧠 AI Health Analytics Platform")
-st.markdown("Analyze patient data and receive smart insights instantly.")
 
 with st.form("patient_form"):
     col1, col2 = st.columns(2)
@@ -63,33 +60,23 @@ if submit:
             res = requests.post("http://localhost:8000/predict", json=payload)
             res.raise_for_status()
             output = res.json()
-            st.success("✅ Health Analysis Complete")
 
-            st.markdown("### 📋 AI Health Report")
             st.write(output["gemini_insight"])
 
-            st.markdown("### 📊 Sentiment Analysis of Patient Condition")
-            df = pd.DataFrame(output["hf_analysis"])
-            st.dataframe(df, use_container_width=True)
-
         except Exception as e:
-            st.error(f"❌ Error: {str(e)}")
+            st.error(f" Error: {str(e)}")
 
 ```
 
+a.py
 ```python
 
 
-# GEMINI AI ENGINE - ai_engine.py
 import google.generativeai as genai
 from google.generativeai import GenerativeModel
-from transformers import pipeline
 
-# Configure your Gemini key here
-genai.configure(api_key="AIzaSyB_V3DqJiHPzsbklDmkQQNnSORGPTNnNyo")
+genai.configure(api_key="")
 model = GenerativeModel("gemini-2.0-flash")
-
-sentiment_model = pipeline("sentiment-analysis")
 
 
 def generate_health_insight(patient_data: dict):
@@ -111,10 +98,5 @@ Provide:
 """
     response = model.generate_content(prompt)
     return response.text
-
-
-def analyze_with_huggingface(text):
-    sentiment = sentiment_model(text)
-    return sentiment
 
 ```
