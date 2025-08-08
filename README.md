@@ -3,7 +3,7 @@ b.py
 ```python
 from fastapi import FastAPI
 from pydantic import BaseModel
-from a import generate_health_insight, analyze_with_huggingface
+from a import generate_health_insight
 
 app = FastAPI()
 
