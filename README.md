@@ -1,5 +1,53 @@
 https://docs.google.com/spreadsheets/d/1_ixKQ-wIsOwJj8McX1Q6GgU4YV9bQuddkXmZxWWyelU/edit?usp=sharing
 
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import gradio as gr
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
+
+# Load the dataset
+df = pd.read_csv("/content/Mall_Customers (1) (1).csv")
+
+# Select the two features for clustering
+X = df[['Annual Income (k$)', 'Spending Score (1-100)']]
+
+# Scale the features
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+# 📊 Plot BEFORE clustering
+sns.scatterplot(x=X['Annual Income (k$)'], y=X['Spending Score (1-100)'], s=100)
+plt.show()
+
+# 🧠 Apply K-Means with 4 clusters
+kmeans = KMeans(n_clusters=4, random_state=42)
+df['Cluster'] = kmeans.fit_predict(X_scaled)
+
+# 🎨 Plot AFTER clustering
+sns.scatterplot(data=df, x='Annual Income (k$)', y='Spending Score (1-100)', hue='Cluster', palette='Set2', s=100)
+plt.show()
+
+# Prediction function for Gradio
+def predict_cluster(annual_income, spending_score):
+    new_customer = [[annual_income, spending_score]]
+    cluster_label = kmeans.predict(scaler.transform(new_customer))[0]
+    return f"Predicted cluster: {cluster_label}"
+
+# Gradio Interface
+interface = gr.Interface(
+    fn=predict_cluster,
+    inputs=[
+        gr.Number(label="Annual Income (k$)"),
+        gr.Number(label="Spending Score (1-100)")
+    ],
+    outputs="text",
+   
+)
+interface.launch()
+```
 ~~~python
 
 import streamlit as st
