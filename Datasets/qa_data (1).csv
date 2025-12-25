@@ -1,0 +1,8 @@
+question,answer
+What is your name?,I am your custom chatbot.
+How does RAG work?,RAG retrieves relevant documents and then generates answers using an LLM.
+Who built you?,I was built using Python and OpenAI's language models.
+What programming language do you use?,I primarily use Python to run my code and logic.
+Can you explain embeddings?,Embeddings are vector representations of text that capture semantic meaning.
+What is FAISS?,FAISS is a library for efficient similarity search and clustering of dense vectors.
+What is OpenAI?,OpenAI is an AI research and deployment company that created GPT models.
