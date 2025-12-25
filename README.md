@@ -1,5 +1,119 @@
 https://docs.google.com/spreadsheets/d/1_ixKQ-wIsOwJj8McX1Q6GgU4YV9bQuddkXmZxWWyelU/edit?usp=sharing
 
+
+```python
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📄 RAG Chatbot</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Inter', sans-serif;
+    }
+    body {
+        background: linear-gradient(135deg, #74ebd5, #acb6e5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+    }
+    .chatbox {
+        background: #fff;
+        width: 100%;
+        max-width: 600px;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s ease;
+    }
+    .chatbox:hover {
+        transform: translateY(-5px);
+    }
+    h2 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 25px;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+    input[type="text"] {
+        padding: 15px;
+        border-radius: 12px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        margin-bottom: 15px;
+        transition: all 0.3s ease;
+    }
+    input[type="text"]:focus {
+        outline: none;
+        border-color: #6c63ff;
+        box-shadow: 0 0 10px rgba(108,99,255,0.3);
+    }
+    button {
+        padding: 15px;
+        border: none;
+        border-radius: 12px;
+        background: #6c63ff;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    button:hover {
+        background: #574bff;
+        transform: scale(1.05);
+    }
+    .answer {
+        margin-top: 20px;
+        background: #f0f4ff;
+        border-left: 5px solid #6c63ff;
+        padding: 20px;
+        border-radius: 12px;
+        font-size: 15px;
+        color: #333;
+        line-height: 1.5;
+        animation: fadeIn 0.5s ease-in-out;
+    }
+    @keyframes fadeIn {
+        0% { opacity: 0; transform: translateY(10px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 640px) {
+        .chatbox {
+            padding: 20px;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="chatbox">
+    <h2>📄 CSV-based RAG Chatbot</h2>
+    <form method="POST">
+        <input type="text" name="query" placeholder="Ask me anything..." required>
+        <button type="submit">Ask</button>
+    </form>
+
+    {% if answer %}
+    <div class="answer">
+        <strong>Answer:</strong><br>
+        {{ answer }}
+    </div>
+    {% endif %}
+</div>
+</body>
+</html>
+```
 ```python
 import pandas as pd
 import matplotlib.pyplot as plt
